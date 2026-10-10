@@ -1,0 +1,118 @@
+body{
+  margin: 0;
+  background: #f5f1e8;
+  font-family: "Inter", system-ui, sans-serif;
+  color: #2b2b2b;
+
+}
+
+.titulo{
+  font-family: "Cinzel", Georgia, serif;
+  text-align: center;
+  font-size: 2.5rem;
+  letter-spacing: 0.05em;
+  margin: 40px 0 10px;
+
+}
+
+/* //=========[CONTENEDOR REYES]===================================== */
+/* El problema es que en el móvil también serían tres, y las tarjetas quedarían diminutas. Para arreglarlo se añade una media query, que es una regla que solo se aplica en pantallas pequeñas */
+
+
+  .contenedor-reyes{
+    display: grid;
+    grid-template-columns: repeat(3,  1fr);
+    gap: 28px;
+    max-width: 1200px;
+    margin:0 auto;
+    padding: 30px 20px;
+  }
+
+  @media(max-width:700px){
+    .contenedor-reyes{
+      grid-template-columns: 1fr;
+    }
+  }
+
+/* //: auto-fill, mete tantas columnas como  quepan, cada una de minimo 240px
+como el contenedor tiewne max-with, 1200px, caben cuatro tarjetas por fila */
+
+.tarjeta{
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.tarjeta:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+}
+
+.tarjeta-cabercera{
+  height: 230px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+   background: radial-gradient(
+    circle at 50% 35%,
+    color-mix(in srgb, var(--color-rey) 55%, white),
+    var(--color-rey)
+  );
+
+}
+
+
+
+.tarjeta-cabecera {
+  height: 260px;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  background: radial-gradient(
+    circle at 50% 35%,
+    color-mix(in srgb, var(--color-rey) 55%, white),
+    var(--color-rey)
+  );
+}
+
+.tarjeta-img {
+  height: 100%;
+  width: auto;
+  max-width: 90%;
+  object-fit: contain;
+  transition: transform 0.4s ease;
+}
+
+.tarjeta-info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px 20px;
+
+}
+.tarjeta-etiqueta{
+   margin: 0;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #999;
+
+}
+.tarjeta-nombre {
+  margin: 4px 0 0;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 1.3rem;
+}
+.tarjeta-precio {
+  background: var(--color-rey);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
