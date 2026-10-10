@@ -4,7 +4,6 @@
 
 ⚛️ React · ⚡ Vite · 🟨 JavaScript · 🎨 CSS
 
-![Vista previa de las tarjetas](./preview.png)
 
 ---
 
