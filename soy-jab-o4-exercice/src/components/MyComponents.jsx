@@ -1,6 +1,9 @@
 import React from 'react'
 
-function MyComponents({nombre, color, precio, imgs}) {
+function MyComponents({nombre, color, precio, imgs,onClick}) {
+
+   console.log(precio);
+   
     
   return (
 
@@ -15,7 +18,7 @@ function MyComponents({nombre, color, precio, imgs}) {
             <p className="tarjeta-etiqueta">Rey Visigodo</p>
             <h2 className="tarjeta-nombre">{nombre} </h2>
         </div>        
-        <span className="tarjeta-precio">Precio: {precio}€</span>
+        <button className="tarjeta-precio" onClick={onClick} >Precio: {precio}€ </button>
     </div>
 
     </article>

@@ -1,16 +1,45 @@
-# React + Vite
+# 👑 Reyes Visigodos — Reserva de reyes con React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ejercicio práctico de React para trabajar **componentes, props y useState**.
 
-Currently, two official plugins are available:
+Se muestra una galería de reyes visigodos, cada uno con su precio. Al hacer clic en el precio, el rey queda **reservado**: su precio se suma al total y su carta desaparece de la galería. Cuando no queda ninguno, aparece un mensaje final.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠️ Tecnologías
 
-## React Compiler
+- React
+- Vite
+- CSS
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Funcionalidades
 
-## Expanding the ESLint configuration
+- Galería de cartas generada con `.map()` a partir de un array de datos.
+- Imágenes cargadas automáticamente a partir del nombre de cada rey (sin tildes).
+- Al reservar un rey:
+  - Su precio se suma al total.
+  - Su nombre aparece en el panel de reservados.
+  - Su carta desaparece de la galería.
+- Mensaje final cuando todos los reyes están reservados.
+- Panel del total fijo al hacer scroll, con efecto de cristal.
+- Animación del total cada vez que cambia.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📚 Lo que he aprendido
+
+- **Estado en el padre:** el componente `App` controla toda la lógica y los hijos solo avisan cuando se hace clic.
+- **Pasar funciones por props:** así un hijo puede comunicarse con su padre.
+- **Actualización funcional:** `setTotal(prev => prev + precio)` usa siempre el valor más reciente del estado.
+- **Spread operator:** `[...prev, nombre]` copia un array y le añade un elemento nuevo.
+- **`.filter()` + `.includes()`:** para pintar solo los reyes que no están reservados, sin borrar los datos originales.
+- **Renderizado:** cada vez que cambia un estado, React vuelve a ejecutar el componente y actualiza solo lo necesario.
+- **Ternario en JSX:** `condición ? A : B` para mostrar las cartas o el mensaje final.
+- **Datos fuera del componente:** lo que no cambia se define fuera para no recrearlo en cada render.
+
+## 🚀 Cómo ejecutarlo
+
+```bash
+npm install
+npm run dev
+```
+
+---
+
+Hecho por [TheSharkFullCode](https://github.com/TheSharkFullCode) 🦈
