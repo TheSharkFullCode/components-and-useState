@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function Ejercicio2({cambiarNoche,cambiarDia}) {
+function Ejercicio2({cambiarNoche,cambiarDia,cambiarTema,oscuro}) {
 
     const [contador,setContador]=useState(0)
 
@@ -24,10 +24,12 @@ function Ejercicio2({cambiarNoche,cambiarDia}) {
 
         </div>
 
-        <div className="fondo" style={{ width:"100vh", display:"flex",gap:"80px"}}>             
+        <div className="fondo" style={{ width:"100vh", display:"flex",gap:"80px", background:oscuro ? "black":"white"}}>             
         
         <div onClick={cambiarDia}><h1 style={{fontSize:"82px"}}>☀️</h1> </div>
         <div onClick={cambiarNoche} ><h1 style={{fontSize:"82px"}}>🌛</h1></div> 
+
+        <div onClick={cambiarTema} ><h1 style={{fontSize:"82px"}}>{oscuro ? "🌚":"🌞" }</h1></div> 
         </div>
 
     </div>
