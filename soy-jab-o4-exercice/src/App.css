@@ -118,7 +118,7 @@ como el contenedor tiewne max-with, 1200px, caben cuatro tarjetas por fila */
 }
 /* [====HEADER====] */
 .resumen{
-  position: sticky;
+  position: relative;
   top: 1rem;
   z-index: 10;
   width: fit-content;
