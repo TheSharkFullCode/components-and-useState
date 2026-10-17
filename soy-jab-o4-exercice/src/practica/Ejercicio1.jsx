@@ -16,7 +16,14 @@ const colores = {
   borde: "#DCE1E8",
   basico: "#2E9E6B",
   medio: "#D08A12",
-  avanzado: "#D3423A",
+  avanzado: "#7c3aed",
+}
+
+// 🎨 NUEVO: colores de cada lenguaje para las votaciones
+const coloresVoto = {
+  React:   { emoji: "⚛️", principal: "#0891B2", degradado: "linear-gradient(90deg, #22D3EE, #3B82F6)", sombra: "rgba(34, 211, 238, 0.35)" },
+  Vue:     { emoji: "💚", principal: "#059669", degradado: "linear-gradient(90deg, #34D399, #16A34A)", sombra: "rgba(52, 211, 153, 0.35)" },
+  Angular: { emoji: "🅰️", principal: "#E11D48", degradado: "linear-gradient(90deg, #F472B6, #E11D48)", sombra: "rgba(244, 114, 182, 0.35)" },
 }
 
 const pagina = {
@@ -98,6 +105,7 @@ const etiquetaHecho = {
   borderRadius: "999px",
 }
 
+
 /* ========================================================= */
 
 function Ejercicio1() {
@@ -108,7 +116,9 @@ function Ejercicio1() {
   const [textoInput,setTextoInput]=useState("")
   
   const [contador,setContador]=useState({React:0,Angular:0,Vue:0})
-   
+
+  // 🧮 NUEVO: el total se calcula a partir del estado (no es otro useState)
+  const totalVotos = contador.React + contador.Vue + contador.Angular
   
   const contarVotos=(lenguaje)=>{
     const nuevoObjeto = {...contador, [lenguaje]:contador[lenguaje]+1}
@@ -239,7 +249,8 @@ function Ejercicio1() {
         <section>
           <h2 style={tituloNivel(colores.medio)}>🟡 Nivel medio</h2>
 
-          {/* Lista de la compra. Un array con 5 productos pintado con .map(). Debajo: “Tienes 5 productos en la lista”. Ese número no puede estar escrito a mano. */}
+          {/* Lista de la compra. Un array con 5 productos pintado con .map(). 
+          Debajo: “Tienes 5 productos en la lista”. Ese número no puede estar escrito a mano. */}
 
           {/* Añadir + Eliminar productos */}
           <div style={bloqueEjercicio(colores.medio)}>
@@ -276,9 +287,8 @@ function Ejercicio1() {
 
         {/* ================= NIVEL AVANZADO ================= */}
         <section>
-          <h2 style={tituloNivel(colores.avanzado)}>🔴 Nivel avanzado</h2>
-
-          {/* Votaciones. Tres opciones (por ejemplo, tres lenguajes de programación), cada una con su botón “Votar”. El botón tiene que ser un componente hijo que reciba el texto y la función por props, y los votos se guardan en el padre. Giro: guarda los tres contadores en un solo estado que sea un objeto: { react: 0, vue: 0, angular: 0 }. */}
+          <h2 style={tituloNivel(colores.avanzado)}>🟣 Nivel avanzado</h2>
+       
           <div style={bloqueEjercicio(colores.avanzado)}>
             <h3 style={tituloEjercicio}>
               Votaciones <span style={etiquetaHecho}>Hecho</span>
@@ -287,10 +297,27 @@ function Ejercicio1() {
               Tres lenguajes, cada uno con su botón “Votar” como componente hijo. Los votos se guardan en
               el padre, en un solo estado que es un objeto.
             </p>
-            <div className="Votaciones" style={{ ...zonaDemo, display: "flex", flexDirection: "column", gap: "12px" }}>
-              <Ejercicio9 nombre='React' votos={contador.React} contarVotos={contarVotos} />
-              <Ejercicio9 nombre="Vue" votos={contador.Vue} contarVotos={contarVotos} />
-              <Ejercicio9 nombre="Angular" votos={contador.Angular} contarVotos={contarVotos} />
+
+            {/* 🎨 NUEVO: zona de votaciones con colores */}
+            <div className="Votaciones" style={{
+              background: "linear-gradient(135deg, #F5F3FF, #ECFEFF, #FDF2F8)",
+              borderRadius: "14px",
+              padding: "22px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "14px",
+            }}>
+              <h4 style={{ margin: 0, fontSize: "18px", fontWeight: "700", color: colores.tinta }}>
+                ¿Cuál es tu lenguaje favorito? 🗳️
+              </h4>
+
+              <Ejercicio9 nombre="React" votos={contador.React} total={totalVotos} color={coloresVoto.React} contarVotos={contarVotos} />
+              <Ejercicio9 nombre="Vue" votos={contador.Vue} total={totalVotos} color={coloresVoto.Vue} contarVotos={contarVotos} />
+              <Ejercicio9 nombre="Angular" votos={contador.Angular} total={totalVotos} color={coloresVoto.Angular} contarVotos={contarVotos} />
+
+              <p style={{ margin: 0, textAlign: "center", fontSize: "13px", color: colores.tintaSuave }}>
+                Total de votos: <strong>{totalVotos}</strong>
+              </p>
             </div>
           </div>
 

@@ -6,8 +6,7 @@ function Ejercicio5({lista,productoNuevo,carrito,agregarAlCarrito,guardarTexto,e
         }
         
   return (
-    <>
-    
+    <>   
 
     <div>
         <span style={{fontWeight:"600", color:"#1f2937"}}>Lista:</span>
